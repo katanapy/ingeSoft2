@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/App_RelativeLayoutStyle"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <EditText
+        android:id="@+id/editTextIDOrg"
+        style="@style/App_EditTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/buttonGuardar"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="Id" >
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/editTextNombreOrg"
+        style="@style/App_EditTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editTextIDOrg"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="Nombre" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/editTextDireccionOrg"
+        style="@style/App_EditTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editTextNombreOrg"
+        android:ems="10"
+        android:hint="Direccion" />
+
+    <EditText
+        android:id="@+id/editTextTelefonoOrg"
+        style="@style/App_EditTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextDireccionOrg"
+        android:ems="10"
+        android:hint="Telefono"
+        android:inputType="number" >
+    </EditText>
+
+    <Button
+        android:id="@+id/buttonGuardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextTelefonoOrg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp"
+        android:onClick="guardarOrganizacion"
+        android:text="Guardar Organizacion" />
+
+    <Button
+        android:id="@+id/buttonEliminar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/buttonGuardar"
+        android:layout_below="@+id/buttonGuardar"
+        android:layout_marginTop="17dp"
+        android:onClick="eliminarOrganizacion"
+        android:text="Eliminar Organizacion" />
+
+    <Button
+        android:id="@+id/buttonVisualizar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/buttonEliminar"
+        android:layout_below="@+id/buttonEliminar"
+        android:layout_marginTop="16dp"
+        android:onClick="verOrganizaciones"
+        android:text="Listar Organizaciones" />
+
+</RelativeLayout>

@@ -1,0 +1,22 @@
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cajon_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.crm.miApp.MainActivity"
+    tools:ignore="MergeRootFrame" >
+    
+    <FrameLayout 
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <fragment
+        android:id="@+id/navegacionCajon"
+        android:name="com.crm.miApp.Cajon"
+        android:layout_width="@dimen/navegacionCajon"
+        android:layout_height="match_parent" 
+        android:layout_gravity="start"/>
+
+</android.support.v4.widget.DrawerLayout>
+    

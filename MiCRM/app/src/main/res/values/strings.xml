@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MiPYME</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="section1">Home</string>
+    <string name="section2">Clientes</string>
+    <string name="section3">Pedidos</string>
+    <string name="abrir_cajon_navegacion">Abrir Cajon de Navegacion</string>
+    <string name="cerrar_cajon_navegacion">Cerrar Cajon de Navegacion</string>
+    <string name="action_settings">Settings</string>
+	<string name="action_example">Example</string>
+
+</resources>

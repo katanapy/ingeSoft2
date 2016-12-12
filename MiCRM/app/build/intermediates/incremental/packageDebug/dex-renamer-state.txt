@@ -1,4 +1,4 @@
-#Thu Dec 08 18:20:47 PYST 2016
+#Mon Dec 12 14:07:48 PYST 2016
 base.0=C\:\\home\\TareasAndroid\\G20\\ingeSoft2.git\\MiCRM\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
 renamed.0=classes.dex
 file.0=C\:\\home\\TareasAndroid\\G20\\ingeSoft2.git\\MiCRM\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex

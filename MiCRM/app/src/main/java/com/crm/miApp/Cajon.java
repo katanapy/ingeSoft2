@@ -200,8 +200,7 @@ public class Cajon extends Fragment{
 				android.R.id.text1,
 				new String[]{
 						getString(R.string.section1),
-						getString(R.string.section2),
-						getString(R.string.section3)
+						getString(R.string.section2)
 				}));
 		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
 		

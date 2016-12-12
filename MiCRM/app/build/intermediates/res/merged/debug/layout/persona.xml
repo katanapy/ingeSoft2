@@ -4,86 +4,178 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <EditText
-        android:id="@+id/editTextID"
-        style="@style/App_EditTextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/btnRegistrar"
-        android:ems="10"
-        android:enabled="false"
-        android:hint="Id" >
-    </EditText>
+
+            <EditText
+                android:id="@+id/editTextNombre"
+                style="@style/App_EditTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextID"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="Nombre" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/editTextTelefono"
+                style="@style/App_EditTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/editTextNombre"
+                android:ems="10"
+                android:hint="Telefono"
+                android:enabled="false"
+                android:inputType="number" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/editTextEmail"
+                style="@style/App_EditTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/editTextTelefono"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="Email" />
+
 
     <EditText
-        android:id="@+id/editTextNombre"
-        style="@style/App_EditTextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextID"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="10dp"
-        android:ems="10"
-        android:hint="Nombre" >
+                android:id="@+id/editTextID"
+                style="@style/App_EditTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="Id"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true">
+            </EditText>
 
-        <requestFocus />
-    </EditText>
-
-    <EditText
-        android:id="@+id/editTextTelefono"
-        style="@style/App_EditTextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/editTextNombre"
-        android:ems="10"
-        android:hint="Telefono"
-        android:inputType="number" >
-    </EditText>
-
-    <EditText
-        android:id="@+id/editTextEmail"
-        style="@style/App_EditTextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/editTextTelefono"
-        android:ems="10"
-        android:hint="Email" />
 
     <Button
         android:id="@+id/btnRegistrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextEmail"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
         android:onClick="guardarPersona"
-        android:text="Guardar Persona" />
+        android:text="Guardar Pedido"
+        android:layout_alignBaseline="@+id/btnRegistros"
+        android:layout_alignBottom="@+id/btnRegistros"
+        android:layout_toLeftOf="@+id/btnRegistros"
+        android:layout_toStartOf="@+id/btnRegistros"
+        android:layout_marginRight="25dp"
+        android:layout_marginEnd="25dp" />
 
-    <Button
-        android:id="@+id/btnEliminar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnRegistrar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
-        android:onClick="eliminarPersona"
-        android:text="Eliminar Persona" />    
-    
     <Button
         android:id="@+id/btnRegistros"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btnEliminar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
         android:onClick="verPersonas"
-        android:text="Listar Personas" />
+        android:text="Listar Pedidos"
+        android:layout_marginBottom="25dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tit_total"
+        android:text="Total del pedido:"
+        style="@style/App_EditTextStyle"
+        android:gravity="center|center_horizontal"
+        android:layout_above="@+id/btnRegistrar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="49dp"
+        android:textSize="18sp"
+        android:layout_toLeftOf="@+id/editTextID"
+        android:layout_toStartOf="@+id/editTextID" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/totalpedido"
+        android:text="Gs. 000.000.000"
+        style="@style/App_EditTextStyle"
+        android:gravity="center|center_horizontal"
+        android:layout_alignBaseline="@+id/tit_total"
+        android:layout_alignBottom="@+id/tit_total"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@+id/combocantidad"
+        android:layout_alignStart="@+id/combocantidad"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:text="Producto:"
+        style="@style/App_EditTextStyle"
+        android:gravity="center_horizontal"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp"
+        android:textSize="18sp"
+        android:layout_below="@+id/editTextEmail"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="39dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/titulo"
+        android:text="Datos Cliente"
+        style="@style/App_EditTextStyle"
+        android:gravity="center_horizontal"
+        android:textSize="18sp"
+        android:layout_alignBaseline="@+id/editTextID"
+        android:layout_alignBottom="@+id/editTextID"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tit_cantidad"
+        android:text="Cantidad"
+        style="@style/App_EditTextStyle"
+        android:layout_marginBottom="52dp"
+        android:textSize="18sp"
+        android:layout_above="@+id/tit_total"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView" />
+
+    <Spinner
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:id="@+id/comboproductos"
+        android:layout_alignTop="@+id/textView"
+        android:layout_alignLeft="@+id/combocantidad"
+        android:layout_alignStart="@+id/combocantidad"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="@android:color/background_light" />
+
+    <Spinner
+        android:layout_width="70dp"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:layout_height="50dp"
+        android:id="@+id/combocantidad"
+        android:layout_alignTop="@+id/tit_cantidad"
+        android:layout_toRightOf="@+id/titulo"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="@android:color/background_light" />
 
 </RelativeLayout>

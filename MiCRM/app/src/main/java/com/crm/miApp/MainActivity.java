@@ -2,6 +2,8 @@ package com.crm.miApp;
 
 import com.crm.miApp.db.SQLite;
 
+import android.content.ContentValues;
+import android.database.Cursor;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -18,7 +20,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @SuppressWarnings("deprecation")
 @SuppressLint("NewApi")
@@ -164,84 +170,59 @@ public class MainActivity extends ActionBarActivity implements
 	/*** Metodos para Personas ***/
 
 	public void guardarPersona(View view) {
-		aceptarPersona();
+		Toast mensaje = Toast.makeText(this, "Pedido guardado con Exito", Toast.LENGTH_SHORT);
+		mensaje.show();
+		//guardarProducto();
+		//aceptarPersona();
 	}
 
-	public void eliminarPersona(View view) {
-		AlertDialog.Builder cuadroDialogo = new AlertDialog.Builder(this);
-		cuadroDialogo.setTitle("Confirmacion de eliminacion");
-		cuadroDialogo
-				.setMessage("Estas seguro que desea Eliminar el registro?");
-		cuadroDialogo.setCancelable(false);
+	private void guardarProducto() {
+		/**
+		 * EN productosPedido: la cantidad del mismo en getcantidad es la cantidad pedida,
+		 * el precioactual es el precio unitario, y el total debe calcularse antes de insertar
+		 */
+		try {
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			Date fecha = new Date();
+			int maxventa;
+			String sentencia;
+			Cursor maxven = sqlite.obtenerUltimoRegistroVentas();
+			maxven.moveToFirst();
+			maxventa = maxven.getInt(maxven.getColumnIndex("max(id_venta)")) + 1;
+			ContentValues valores = new ContentValues();
+			valores.put("id_venta", maxventa);
 
-		cuadroDialogo.setPositiveButton("Aceptar",
-				new DialogInterface.OnClickListener() {
+			// obtiene el ID del cliente si es que el registro ya existe y estamos editando
+			EditText tID = (EditText) findViewById(R.id.editTextID);
+			String idClienteSeleccionado = tID.getText().toString();
 
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						removerPersona();
-					}
-				});
+			valores.put("id_cliente", idClienteSeleccionado);
+			valores.put("fecha", sdf.format(fecha));
 
-		cuadroDialogo.setNegativeButton("Cancelar",
-				new DialogInterface.OnClickListener() {
+			//obtiene el total del pedido
+			TextView totalped = (TextView) findViewById(R.id.totalpedido);
 
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						cancelarPersona();
-					}
-				});
+			valores.put("monto_total", totalped.getText().toString());
 
-		cuadroDialogo.show();
-	}
-
-	public void removerPersona() {
-
-		// obtiene los valores ingresados
-		EditText tNombre = (EditText) findViewById(R.id.editTextNombre);
-		EditText tTelefono = (EditText) findViewById(R.id.editTextTelefono);
-		EditText tEmail = (EditText) findViewById(R.id.editTextEmail);
-
-		// obtiene el ID de la Clientes a Eliminar
-		EditText tID = (EditText) findViewById(R.id.editTextID);
-		String idPersonaEditada = tID.getText().toString();
-
-		// Registra en la base de datos
-		sqlite.abrir();
-
-		boolean respuestaExitosa = false;
-
-		if (!"".equalsIgnoreCase(idPersonaEditada)) {
-
-			respuestaExitosa = sqlite.eliminarRegistroPersonas(idPersonaEditada
-					.substring(idPersonaEditada.indexOf("[") + 1,
-							idPersonaEditada.indexOf("]")));
-
-		} else {
-			Toast.makeText(getBaseContext(),
-					"Error: No puede eliminar un registro inexistente",
-					Toast.LENGTH_SHORT).show();
+			/*db.insert("ventas", null, valores);
+			for (int i = 0; i < carga_productos.productosPedido.size(); i++) {
+				Producto prodActual = carga_productos.productosPedido.get(i);
+				valores = new ContentValues();
+				valores.put("id_venta", maxventa);
+				valores.put("id_producto", prodActual.getId());
+				valores.put("cantidad", prodActual.getCantidad());
+				valores.put("precio", (prodActual.getCantidad() * prodActual.getPrecioActual()));
+				db.insert("detalle_ventas", null, valores);
+				sentencia = "UPDATE producto SET cantidad = cantidad - " + prodActual.getCantidad() +
+						" WHERE id_producto = " + prodActual.getId();
+				db.execSQL(sentencia);
+			}*/
 		}
+		catch (Exception e){
 
-		if (respuestaExitosa) {
-			Toast mensaje = Toast.makeText(this, "Clientes Eliminada con Exito",
-					Toast.LENGTH_SHORT);
-			mensaje.show();
-
-			// limpia los campos para siguiente carga
-			tID.setText("");
-			tNombre.setText("");
-			tTelefono.setText("");
-			tEmail.setText("");
-		} else {
-			Toast.makeText(getBaseContext(),
-					"Error: Compruebe que los datos sean correctos",
-					Toast.LENGTH_SHORT).show();
 		}
-
-		sqlite.cerrar();
-
 	}
+
 
 	public void aceptarPersona() {
 
@@ -304,11 +285,13 @@ public class MainActivity extends ActionBarActivity implements
 	}
 
 	public void verPersonas(View v) {
-		Fragment fragment = new RegistrosClientes();
+		Toast mensaje = Toast.makeText(this, "Coming soon..", Toast.LENGTH_SHORT);
+		mensaje.show();
+		/*Fragment fragment = new RegistrosClientes();
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setDisplayShowTitleEnabled(true);
 		FragmentManager fragmentManager = getSupportFragmentManager();
-		fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+		fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();*/
 	}
 
 	/*** Metodos para Organizacion ***/

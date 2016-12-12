@@ -171,4 +171,13 @@ public class SQLite {
 		return listaDatos;
 	}
 
+
+	public Cursor consultarRegistrosProductos(){
+		return db.rawQuery("SELECT * FROM producto", null);
+	}
+
+	public Cursor obtenerUltimoRegistroVentas(){
+		return  db.rawQuery("SELECT max(id_venta) from ventas", null);
+	}
+
 }

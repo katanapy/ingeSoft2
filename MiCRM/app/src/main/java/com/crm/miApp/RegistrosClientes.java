@@ -100,7 +100,7 @@ public class RegistrosClientes extends Fragment implements OnItemClickListener {
 		ActionBar actionBar = ((ActionBarActivity) getActivity())
 				.getSupportActionBar();
 		actionBar.setDisplayShowTitleEnabled(true);
-		actionBar.setTitle("Clientes");
+		actionBar.setTitle("Pedidos");
 
 		FragmentManager fragmentManager = getActivity()
 				.getSupportFragmentManager();

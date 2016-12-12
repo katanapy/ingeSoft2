@@ -1,6 +1,8 @@
 package com.crm.miApp.db;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -51,6 +53,52 @@ public class BDSQLite extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {		
 		 db.execSQL( sqlPersonas );		 
 		 db.execSQL( sqlOrganizacion );
+
+		db.execSQL("CREATE TABLE IF NOT EXISTS ventas (id_venta INTEGER PRIMARY KEY," +
+				"id_cliente INTEGER, fecha TEXT, monto_total INTEGER," +
+				"FOREIGN KEY (id_cliente) REFERENCES Personas(id));");
+
+		db.execSQL("CREATE TABLE IF NOT EXISTS detalle_ventas (id_venta INTEGER, " +
+				"id_producto INTEGER, cantidad INTEGER, precio INTEGER);");
+
+		db.execSQL("CREATE TABLE IF NOT EXISTS producto (id_producto INTEGER PRIMARY KEY," +
+				"nombre_prod TEXT, fecha_venc TEXT, precio_actual INTEGER, unidad_medida TEXT," +
+				"cantidad INTEGER);");
+
+		Cursor cuenta = db.rawQuery("SELECT count(*) from Personas", null);
+		cuenta.moveToFirst();
+		int c = cuenta.getInt(cuenta.getColumnIndex("count(*)"));
+		if (c == 0) {
+			ContentValues valores = new ContentValues();
+			valores.put("id", "1");
+			valores.put("Nombre", "Juan Pérez");
+			valores.put("Telefono", "0981 123 456");
+			valores.put("Email", "juan@perez.com");
+			db.insert("Personas", null, valores);
+			valores = new ContentValues();
+			valores.put("id", "2");
+			valores.put("Nombre", "La Empresa S.A.");
+			valores.put("Telefono", "021 1 800 00");
+			valores.put("Email", "l@empre.sa");
+			db.insert("Personas", null, valores);
+			valores = new ContentValues();
+			valores.put("id_producto", "1");
+			valores.put("nombre_prod", "Coca Pepsi");
+			valores.put("fecha_venc", "31/12/2016");
+			valores.put("precio_actual", "7500");
+			valores.put("unidad_medida", "litros (lts)");
+			valores.put("cantidad", "10");
+			db.insert("producto", null, valores);
+			valores = new ContentValues();
+			valores.put("id_producto", "2");
+			valores.put("nombre_prod", "Lomito completo");
+			valores.put("fecha_venc", "01/09/2018");
+			valores.put("precio_actual", "15000");
+			valores.put("unidad_medida", "gramos (grs)");
+			valores.put("cantidad", "50");
+			db.insert("producto", null, valores);
+		}
+
 	}
 
 	@Override
